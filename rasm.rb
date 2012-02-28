@@ -40,7 +40,7 @@ class MRISC
   def numeric?(n); true if Float(n) rescue false; end
 end
 
-puts 'Example 1: pow'
+puts 'Example 1: pow(3,5)'
 
 MRISC.new.run('
 *=== Main ===*
@@ -61,7 +61,7 @@ end;
   jmp,@rj;          *return from subroutine*
 ')
 
-puts 'Example 2: fac'
+puts 'Example 2: fac(7)'
 
 MRISC.new.run('
 *==========[ stack test ]===========*
