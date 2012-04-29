@@ -28,19 +28,19 @@ Executes code that looks like this:
 
 **The commands are these:**
 
-* let - assign a variable
-* out - output the content of a variable
-* dbg - direct output
-* add - addition
-* sub - substraction
-* mul - multiplication
-* mod - modulo
-* div - division
-* jmp - unconditional jump
-* jis - jump if smaller
-* jig - jump if greater
-* jie - jump if equal
-* jiu - jump if unequal
-* end - terminate the program
-* pus - push to the stack
-* pop - pop from the stack
+    let - assign a variable
+    out - output the content of a variable
+    dbg - direct output
+    add - addition
+    sub - substraction
+    mul - multiplication
+    mod - modulo
+    div - division
+    jmp - jump unconditionally
+    jis - jump if smaller
+    jig - jump if greater
+    jie - jump if equal
+    jiu - jump if unequal
+    end - terminate the program
+    pus - push to the stack
+    pop - pop from the stack
