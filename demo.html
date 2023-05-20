@@ -13,7 +13,6 @@
 
     }
 
-    /* Set a fixed width for the container */
     .container {
       width: 50vw;
       min-width: 400px;
@@ -64,12 +63,7 @@ jmp,@rj
             op_limit: 9999,
             output: function(...a){document.getElementById('output').innerText += a.join(', ') + "\n"},
             debug: function(token, vars){document.getElementById('debug').innerText += `${token}\t${JSON.stringify(vars)}\n`}
-        })
-        console.log()
-        // run(code, opts = {}) {
-        // opts.op_limit = opts.op_limit || 99999;
-        // opts.debug = opts.debug || false;
-        // 
+        });
     })
   </script>
 </body>

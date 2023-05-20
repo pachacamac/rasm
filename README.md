@@ -45,4 +45,4 @@ Executes code that looks like this:
     pus - push to the stack
     pop - pop from the stack
 
-[demo](demo.html)
+[demo](https://raw.githack.com/pachacamac/rasm/master/demo.html)
