@@ -44,3 +44,5 @@ Executes code that looks like this:
     end - terminate the program
     pus - push to the stack
     pop - pop from the stack
+
+[demo](demo.html)

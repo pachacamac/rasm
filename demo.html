@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RASM Demo</title>
+  <style>
+    html, body {
+      background-color: #202123;
+      color: #d1d5db;
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+
+    }
+
+    /* Set a fixed width for the container */
+    .container {
+      width: 50vw;
+      min-width: 400px;
+    }
+    button { padding: 0.5em; margin: 0.5em 0 0.5em 0; }
+    textarea {
+        width:100%; background-color: #353740; color: #d1d5db;
+    }
+    pre { border:1px solid #151720; background-color: #252730; padding: 0.5em; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>RASM</h1>
+    <textarea id="input" rows="20">*==========[ stack test ]===========*
+*construct for a subroutine call*
+let,n,7
+let,@rj,_pc
+add,@rj,2
+jmp,@fac
+out,n  *print result*
+end    *end here*
+*=========[ subroutines ]=========*
+@fac *calculates faculty of n, uses t, uses the stack, result in n*
+    pus,n
+    sub,n,1
+    jig,n,1,@fac
+    @facloop
+    pop,t
+    mul,n,t
+    jig,_ss,0,@facloop
+jmp,@rj
+*===================================*</textarea>
+    <br>
+    <button id="run">run</button>
+    <br>
+    <h3>output</h3>
+    <pre id="output"></pre>
+    <h3>debug</h3>
+    <pre id="debug"></pre>
+  </div>
+  <script src="rasm.js">
+  </script>
+  <script>
+    document.getElementById('run').addEventListener('click', function(){
+        const rasm = new RASM();
+        rasm.run(document.getElementById('input').value, {
+            op_limit: 9999,
+            output: function(...a){document.getElementById('output').innerText += a.join(', ') + "\n"},
+            debug: function(token, vars){document.getElementById('debug').innerText += `${token}\t${JSON.stringify(vars)}\n`}
+        })
+        console.log()
+        // run(code, opts = {}) {
+        // opts.op_limit = opts.op_limit || 99999;
+        // opts.debug = opts.debug || false;
+        // 
+    })
+  </script>
+</body>
+</html>

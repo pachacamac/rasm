@@ -3,7 +3,8 @@
 class RASM {
     run(code, opts = {}) {
         opts.op_limit = opts.op_limit || 99999;
-        opts.debug = opts.debug || false;
+        opts.debug = opts.debug || console.debug;
+        opts.output = opts.output || console.info;
         let tokens = code
             .replace(/(\*.*?\*)|[^a-z0-9-@._\n,]/g, "")
             .split("\n")
@@ -26,16 +27,16 @@ class RASM {
                 throw new Error("too many operations!");
             }
             let [cmd, a, b, c] = tokens[this.vars._pc];
-            console.log(tokens[this.vars._pc], this.vars); // for debug purposes only
+            opts.debug(tokens[this.vars._pc], this.vars); // for debug purposes only
             switch (cmd) {
                 case "let":
                     this.set(a, b);
                     break;
                 case "out":
-                    console.log(this.get(a));
+                    opts.output(this.get(a));
                     break;
                 case "dbg":
-                    console.log(a);
+                    opts.debug(a);
                     break;
                 case "add":
                     this.set(a, this.get(a) + this.get(b));
