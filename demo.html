@@ -57,12 +57,17 @@ jmp,@rj
   <script src="rasm.js">
   </script>
   <script>
+    const input = document.getElementById('input');
+    const output = document.getElementById('output');
+    const debug = document.getElementById('debug');
+    output.innerText = '';
+    debug.innerText = '';
     document.getElementById('run').addEventListener('click', function(){
         const rasm = new RASM();
-        rasm.run(document.getElementById('input').value, {
+        rasm.run(input.value, {
             op_limit: 9999,
-            output: function(...a){document.getElementById('output').innerText += a.join(', ') + "\n"},
-            debug: function(token, vars){document.getElementById('debug').innerText += `${token}\t${JSON.stringify(vars)}\n`}
+            output: function(...a){output.innerText += a.join(', ') + "\n"},
+            debug: function(token, vars){debug.innerText += `${token}\t${JSON.stringify(vars)}\n`}
         });
     })
   </script>
