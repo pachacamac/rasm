@@ -71,7 +71,7 @@ jmp,@rj
                 debug: function(token, vars){debug.innerText += `${token}\t${JSON.stringify(vars)}\n`}
             });
         }catch(err){
-            debug.innerText += `${err?.message||'ERROR'}`
+            debug.innerText += `${err?.message||'ERROR'}\n`
         }
     })
   </script>
