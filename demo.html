@@ -60,15 +60,19 @@ jmp,@rj
     const input = document.getElementById('input');
     const output = document.getElementById('output');
     const debug = document.getElementById('debug');
-    output.innerText = '';
-    debug.innerText = '';
     document.getElementById('run').addEventListener('click', function(){
+        output.innerText = '';
+        debug.innerText = '';
         const rasm = new RASM();
-        rasm.run(input.value, {
-            op_limit: 9999,
-            output: function(...a){output.innerText += a.join(', ') + "\n"},
-            debug: function(token, vars){debug.innerText += `${token}\t${JSON.stringify(vars)}\n`}
-        });
+        try{
+            rasm.run(input.value, {
+                op_limit: 9999,
+                output: function(...a){output.innerText += a.join(', ') + "\n"},
+                debug: function(token, vars){debug.innerText += `${token}\t${JSON.stringify(vars)}\n`}
+            });
+        }catch(err){
+            debug.innerText += `${err?.message||'ERROR'}`
+        }
     })
   </script>
 </body>
